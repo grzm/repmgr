@@ -1648,9 +1648,9 @@ test_ssh_connection(char *host, char *remote_user)
 
 	/* Check if we have ssh connectivity to host before trying to rsync */
 	if (!remote_user[0])
-		maxlen_snprintf(script, "ssh -o Batchmode=yes %s /bin/true", host);
+		maxlen_snprintf(script, "ssh -o Batchmode=yes %s /bin/echo 2>&1", host);
 	else
-		maxlen_snprintf(script, "ssh -o Batchmode=yes %s -l %s /bin/true", host, remote_user);
+		maxlen_snprintf(script, "ssh -o Batchmode=yes %s -l %s /bin/echo 2>&1", host, remote_user);
 
 	log_debug(_("command is: %s"), script);
 	r = system(script);

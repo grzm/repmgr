@@ -35,4 +35,9 @@ extern int xsnprintf(char *str, size_t size, const char *format, ...);
 extern int sqlquery_snprintf(char *str, const char *format, ...);
 extern int maxlen_snprintf(char *str, const char *format, ...);
 
+#ifdef __APPLE__
+#define REPMGR_NEED_STRNLEN
+extern size_t strnlen(const char *str, size_t max);
+#endif /* __APPLE__ */
+
 #endif	/* _STRUTIL_H_ */

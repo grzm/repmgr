@@ -85,3 +85,12 @@ int maxlen_snprintf(char *str, const char *format, ...)
 
 	return retval;
 }
+
+#ifdef REPMGR_NEED_STRNLEN
+size_t strnlen(const char *str, size_t max)
+{
+	register const char *p;
+	for (p = str; *p && max--; ++p);
+	return (p - str);
+}
+#endif /* REPMGR_NEED_STRNLEN */
